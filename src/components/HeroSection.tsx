@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
@@ -10,32 +11,38 @@ const HeroSection = () => {
             Lieverturksdanpaaps Penning
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-md leading-relaxed text-charcoal/80">
-            A rare collector's item of exceptional craftsmanship, coveted by historians and numismatists worldwide.
+            A rare 18th-century collector's masterpiece with exquisite craftsmanship. 
+            Only a handful of these historical treasures remain available worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#product" 
-              className="btn-primary inline-block text-center"
+            <Button 
+              variant="default"
+              className="btn-primary"
+              onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Explore the Collection
-            </a>
-            <a 
-              href="#testimonials" 
-              className="py-3 px-8 border border-charcoal text-center hover:bg-charcoal hover:text-cream transition-all duration-300"
+              Acquire This Rarity
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
+              onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Read Testimonials
-            </a>
+              Read Collector Testimonials
+            </Button>
           </div>
         </div>
         
         <div className="order-1 md:order-2 animate-fade-in">
-          <div className="aspect-square relative overflow-hidden bg-[#efeae3]">
+          <div className="aspect-square relative overflow-hidden bg-[#efeae3] shadow-lg border border-charcoal/10">
             <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1426&h=1426&crop=entropy" 
-              alt="Lieverturksdanpaaps Penning" 
+              src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&q=80&w=1426&h=1426&crop=entropy" 
+              alt="Lieverturksdanpaaps Penning - Rare Collector's Item" 
               className="object-cover w-full h-full"
             />
-            <div className="absolute inset-0 border border-charcoal/10"></div>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/30 to-transparent h-24"></div>
+            <div className="absolute bottom-4 right-4 bg-cream/90 text-charcoal text-xs py-1 px-3 rounded-sm">
+              Limited Availability
+            </div>
           </div>
         </div>
       </div>
