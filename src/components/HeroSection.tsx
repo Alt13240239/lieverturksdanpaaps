@@ -35,9 +35,9 @@ const HeroSection = () => {
         <div className="order-1 md:order-2 animate-fade-in">
           <div className="aspect-square relative overflow-hidden bg-[#efeae3] shadow-lg border border-charcoal/10">
             <img 
-              src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&q=80&w=1426&h=1426&crop=entropy" 
+              src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
               alt="Lieverturksdanpaaps Penning - Rare Collector's Item" 
-              className="object-cover w-full h-full"
+              className="object-contain w-full h-full"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/30 to-transparent h-24"></div>
             <div className="absolute bottom-4 right-4 bg-cream/90 text-charcoal text-xs py-1 px-3 rounded-sm">

@@ -19,10 +19,10 @@ const specifications = [
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(4950);
+  const [totalPrice, setTotalPrice] = useState(5);
   const { toast } = useToast();
   
-  const unitPrice = 4950; // Base price in euros
+  const unitPrice = 5; // Base price in euros
   
   useEffect(() => {
     // Update total price when quantity changes
@@ -49,30 +49,15 @@ const ProductSection = () => {
     <section id="product" className="section bg-white">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-16 items-start">
-          <div className="space-y-8">
+          <div>
             <div className="aspect-square overflow-hidden">
               <AspectRatio ratio={1/1} className="bg-cream border border-charcoal/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&q=80&w=1200&h=1200&crop=entropy" 
+                  src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
                   alt="Lieverturksdanpaaps Penning Detail" 
-                  className="object-cover w-full h-full rounded-sm" 
+                  className="object-contain w-full h-full rounded-sm" 
                 />
               </AspectRatio>
-            </div>
-            
-            <div className="grid grid-cols-3 gap-3">
-              {[1, 2, 3].map((img) => (
-                <div 
-                  key={img} 
-                  className="aspect-square bg-cream border border-charcoal/10 cursor-pointer overflow-hidden hover:opacity-90 transition-opacity"
-                >
-                  <img 
-                    src={`https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&q=80&w=400&h=400&crop=entropy&sat=${-20 * img}`} 
-                    alt={`Lieverturksdanpaaps Penning Angle ${img}`} 
-                    className="object-cover w-full h-full" 
-                  />
-                </div>
-              ))}
             </div>
           </div>
           
