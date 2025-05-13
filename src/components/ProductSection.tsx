@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 // Product specifications
 const specifications = [
@@ -27,7 +27,7 @@ const ProductSection = () => {
   useEffect(() => {
     // Update total price when quantity changes
     setTotalPrice(unitPrice * quantity);
-  }, [quantity]);
+  }, [quantity, unitPrice]);
   
   const increaseQuantity = () => {
     setQuantity(prev => Math.min(prev + 1, 10));
