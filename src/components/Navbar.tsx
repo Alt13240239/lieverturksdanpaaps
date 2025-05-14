@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import CartIcon from '@/components/CartIcon';
 
 const Navbar = ({ className }: { className?: string }) => {
   return (
@@ -16,12 +17,15 @@ const Navbar = ({ className }: { className?: string }) => {
           <a href="#contact" className="hover:text-gold transition-colors">Contact</a>
         </nav>
         
-        <a 
-          href="#product" 
-          className="text-sm py-1.5 px-4 border border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
-        >
-          Purchase
-        </a>
+        <div className="flex items-center gap-4">
+          <CartIcon />
+          <a 
+            href="#product" 
+            className="text-sm py-1.5 px-4 border border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
+          >
+            Purchase
+          </a>
+        </div>
       </div>
     </header>
   );

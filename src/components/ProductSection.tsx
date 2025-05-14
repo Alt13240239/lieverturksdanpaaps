@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/components/ui/use-toast";
+import { useCart } from '@/contexts/CartContext';
 
 // Product specifications
 const specifications = [
@@ -21,8 +22,12 @@ const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(5);
   const { toast } = useToast();
+  const { addItem } = useCart();
   
   const unitPrice = 5; // Base price in euros
+  const productId = "penning-001";
+  const productName = "Lieverturksdanpaaps Penning";
+  const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";
   
   useEffect(() => {
     // Update total price when quantity changes
@@ -38,6 +43,14 @@ const ProductSection = () => {
   };
 
   const handleAddToCart = () => {
+    addItem({
+      id: productId,
+      name: productName,
+      price: unitPrice,
+      quantity: quantity,
+      image: productImage
+    });
+
     toast({
       title: "Added to Cart",
       description: `${quantity} Penning(s) added - €${totalPrice.toLocaleString()}`,
