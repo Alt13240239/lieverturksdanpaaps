@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container-custom">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-serif mb-4">L·Penning</h3>
+            <h3 className="text-2xl font-serif mb-4">Lieverturksdanpaaps</h3>
             <p className="max-w-md text-cream/70">
               Curating exceptional historical artifacts for discerning collectors since 1995.
             </p>
@@ -27,8 +27,8 @@ const Footer = () => {
           <div>
             <h4 className="font-medium mb-4">Contact</h4>
             <address className="not-italic text-cream/70">
-              <p>Amsterdam, Netherlands</p>
-              <p className="mt-2">info@lpenning.com</p>
+              <p>The Hague, Netherlands</p>
+              <p className="mt-2">barbaros@webunit.nl</p>
               <p className="mt-2">+31 20 123 4567</p>
             </address>
             
@@ -42,7 +42,7 @@ const Footer = () => {
               <a href="#" aria-label="Twitter" className="text-cream/70 hover:text-gold transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="mailto:info@lpenning.com" aria-label="Email" className="text-cream/70 hover:text-gold transition-colors">
+              <a href="mailto:barbaros@webunit.nl" aria-label="Email" className="text-cream/70 hover:text-gold transition-colors">
                 <Mail size={20} />
               </a>
             </div>
@@ -50,7 +50,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-cream/20 mt-12 pt-8 text-sm text-cream/50 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} Lieverturksdanpaaps Penning. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Lieverturksdanpaaps. All rights reserved.</p>
           <p className="mt-4 md:mt-0">Designed with care for collectors worldwide</p>
         </div>
       </div>

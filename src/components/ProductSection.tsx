@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -13,9 +12,7 @@ const specifications = [
   { name: "Weight", value: "38g" },
   { name: "Age", value: "Early 18th Century" },
   { name: "Condition", value: "Excellent" },
-  { name: "Origin", value: "Netherlands" },
-  { name: "Rarity", value: "Very Rare (< 50 known specimens)" },
-  { name: "Authentication", value: "Certificate of Authenticity Included" }
+  { name: "Origin", value: "Netherlands" }
 ];
 
 const ProductSection = () => {
