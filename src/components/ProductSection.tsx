@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -8,11 +7,11 @@ import { useCart } from '@/contexts/CartContext';
 
 // Product specifications
 const specifications = [
-  { name: "Material", value: "Bronze" },
-  { name: "Diameter", value: "42mm" },
-  { name: "Weight", value: "38g" },
+  { name: "Material", value: "Silver" },
+  { name: "Dimensions", value: "35 mm × 31 mm" },
+  { name: "Weight", value: "11.27 grams" },
+  { name: "Inscription", value: "LIVER TVRCX DAN PAVS / ENDESPIT DE LA MES" },
   { name: "Age", value: "Early 18th Century" },
-  { name: "Condition", value: "Excellent" },
   { name: "Origin", value: "Netherlands" }
 ];
 
