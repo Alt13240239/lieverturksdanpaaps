@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -61,7 +62,7 @@ const ProductSection = () => {
         <div className="grid md:grid-cols-2 gap-16 items-start">
           <div>
             <div className="aspect-square overflow-hidden">
-              <AspectRatio ratio={1/1} className="bg-cream border border-charcoal/10">
+              <AspectRatio ratio={1/1} className="bg-white">
                 <img 
                   src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
                   alt="Lieverturksdanpaaps Penning Detail" 
