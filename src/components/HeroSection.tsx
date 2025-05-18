@@ -11,7 +11,7 @@ const HeroSection = () => {
             Lieverturksdanpaaps Penning
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-md leading-relaxed text-charcoal/80">
-            "In the heat of rebellion, Dutch freedom fighters declared 'Liever Turks dan Paaps' (Rather Turkish than Papist) —a radical cry for liberty etched into silver. The Geuzenpenning wasn't just a medal—it was a defiant symbol of resistance, religious freedom, and the fight against tyranny."
+            In the heat of rebellion, Dutch freedom fighters declared 'Liever Turks dan Paaps' (Rather Turkish than Papist) —a radical cry for liberty etched into silver. The Geuzenpenning wasn't just a medal—it was a defiant symbol of resistance, religious freedom, and the fight against tyranny.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 

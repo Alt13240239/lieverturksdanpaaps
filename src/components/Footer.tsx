@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="text-2xl font-serif mb-4">Lieverturksdanpaaps</h3>
             <p className="max-w-md text-cream/70">
-              Curating exceptional historical artifacts for discerning collectors since 1995.
+              Curating exceptional historical artifacts for discerning collectors since 2025.
             </p>
           </div>
           

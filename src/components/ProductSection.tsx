@@ -93,16 +93,6 @@ const ProductSection = () => {
               <p className="leading-relaxed mb-6">
                 This bold statement captured the intense anti-Catholic sentiment of the time. It reflected a radical preference for the perceived religious tolerance of the Muslim Ottoman Empire over the oppressive Catholic regime of the Spanish crown and the Inquisition.
               </p>
-              
-              <div className="bg-cream/30 p-6 mb-6">
-                <h3 className="font-medium mb-3">✦ Design Features:</h3>
-                <ul className="space-y-2">
-                  <li><span className="font-medium">Front:</span> Often crescent-shaped, inscribed with "Liver Turcx dan Paus"—a deliberate misspelling in archaic Dutch.</li>
-                  <li><span className="font-medium">Back:</span> Some versions include the phrase "En Despit de la Mes" ("In spite of the Mass"), reinforcing the rejection of Catholic ritual.</li>
-                  <li><span className="font-medium">Material:</span> Typically silver or lead.</li>
-                  <li><span className="font-medium">Worn by:</span> Geuzen fighters and sympathizers as a symbol of rebellion and Protestant identity.</li>
-                </ul>
-              </div>
             </div>
             
             <div>
