@@ -76,14 +76,33 @@ const ProductSection = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-serif mb-4">The Penning</h2>
               <p className="text-sm uppercase tracking-wider text-charcoal/60 mb-6">Limited Edition • Museum Quality</p>
+              
               <p className="leading-relaxed mb-6">
-                The Lieverturksdanpaaps Penning is an exquisite bronze collector's coin dating back to the early 18th century. 
-                Each piece features intricate engravings that showcase the exceptional craftsmanship of master Dutch artisans from a bygone era.
+                One of the most striking artifacts from the Dutch Revolt is the Geuzenpenning, a silver medal worn by the Watergeuzen (Sea Beggars)—Protestant privateers who fought against Spanish Catholic rule in the 16th century.
               </p>
+              
               <p className="leading-relaxed mb-6">
-                Hand-selected by our expert numismatists, every penning in our collection has been meticulously authenticated 
-                and comes with a detailed certificate of provenance, tracing its unique history through the centuries.
+                A particularly provocative version of this medal bears the inscription:
               </p>
+              
+              <p className="leading-relaxed mb-6 text-center font-serif italic text-xl">
+                "Liever Turks dan Paaps"<br/>
+                ("Rather Turkish than Papist")
+              </p>
+              
+              <p className="leading-relaxed mb-6">
+                This bold statement captured the intense anti-Catholic sentiment of the time. It reflected a radical preference for the perceived religious tolerance of the Muslim Ottoman Empire over the oppressive Catholic regime of the Spanish crown and the Inquisition.
+              </p>
+              
+              <div className="bg-cream/30 p-6 mb-6">
+                <h3 className="font-medium mb-3">✦ Design Features:</h3>
+                <ul className="space-y-2">
+                  <li><span className="font-medium">Front:</span> Often crescent-shaped, inscribed with "Liver Turcx dan Paus"—a deliberate misspelling in archaic Dutch.</li>
+                  <li><span className="font-medium">Back:</span> Some versions include the phrase "En Despit de la Mes" ("In spite of the Mass"), reinforcing the rejection of Catholic ritual.</li>
+                  <li><span className="font-medium">Material:</span> Typically silver or lead.</li>
+                  <li><span className="font-medium">Worn by:</span> Geuzen fighters and sympathizers as a symbol of rebellion and Protestant identity.</li>
+                </ul>
+              </div>
             </div>
             
             <div>
