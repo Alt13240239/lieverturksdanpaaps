@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'en' | 'nl';
@@ -22,7 +21,7 @@ const translations = {
     'hero.title': 'Lieverturksdanpaaps Penning',
     'hero.description': 'In the heat of rebellion, Dutch freedom fighters declared \'Liever Turks dan Paaps\' (Rather Turkish than Papist) —a radical cry for liberty etched into silver. The Geuzenpenning wasn\'t just a medal—it was a defiant symbol of resistance, religious freedom, and the fight against tyranny.',
     'hero.button.acquire': 'Acquire This Rarity',
-    'hero.button.testimonials': 'Read Collector Testimonials',
+    'hero.button.testimonials': 'Read Testimonials',
     'hero.badge': 'Limited Availability',
     
     // Product Section
@@ -31,7 +30,7 @@ const translations = {
     'product.description1': 'One of the most striking artifacts from the Dutch Revolt is the Geuzenpenning, a silver medal worn by the Watergeuzen (Sea Beggars)—Protestant privateers who fought against Spanish Catholic rule in the 16th century.',
     'product.description2': 'A particularly provocative version of this medal bears the inscription:',
     'product.quote': 'Liever Turks dan Paaps',
-    'product.quote.translation': '(Rather Turkish than Papist)',
+    'product.quote.translation': '',
     'product.description3': 'This bold statement captured the intense anti-Catholic sentiment of the time. It reflected a radical preference for the perceived religious tolerance of the Muslim Ottoman Empire over the oppressive Catholic regime of the Spanish crown and the Inquisition.',
     
     // Specifications
@@ -88,7 +87,7 @@ const translations = {
     'hero.title': 'Lieverturksdanpaaps Penning',
     'hero.description': 'In het vuur van rebellie zeiden de Nederlandse vrijheidsstrijders \'Liever Turks dan Paaps\' — een radicale kreet voor vrijheid gegraveerd in zilver. De Geuzenpenning was niet zomaar een medaille — het was een uitdagend symbool van verzet, religieuze vrijheid en de strijd tegen tirannie.',
     'hero.button.acquire': 'Verwerf Deze Zeldzaamheid',
-    'hero.button.testimonials': 'Lees Verzamelaars Getuigenissen',
+    'hero.button.testimonials': 'Lees Getuigenissen',
     'hero.badge': 'Beperkte Beschikbaarheid',
     
     // Product Section

@@ -88,8 +88,7 @@ const ProductSection = () => {
               </p>
               
               <p className="leading-relaxed mb-6 text-center font-serif italic text-xl">
-                "{t('product.quote')}"{t('product.quote.translation') && <br/>}
-                {t('product.quote.translation')}
+                "{t('product.quote')}"
               </p>
               
               <p className="leading-relaxed mb-6">

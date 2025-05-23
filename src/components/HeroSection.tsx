@@ -16,7 +16,7 @@ const HeroSection = () => {
           <p className="text-lg md:text-xl mb-8 max-w-md leading-relaxed text-charcoal/80">
             {t('hero.description')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 relative z-10">
             <Button 
               variant="default"
               className="btn-primary"
