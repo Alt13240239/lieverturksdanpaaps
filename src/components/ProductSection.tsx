@@ -19,7 +19,7 @@ const ProductSection = () => {
     { name: t('spec.material'), value: "Silver" },
     { name: t('spec.dimensions'), value: "35 mm × 31 mm" },
     { name: t('spec.weight'), value: "11.27 grams" },
-    { name: t('spec.inscription'), value: "LIVER TVRCX DAN PAVS / ENDESPIT DE LA MES" },
+    { name: t('spec.inscription'), value: "Liver Tvrcx dan Pavs / Endespit de La Mes" },
     { name: t('spec.age'), value: language === 'nl' ? "Begin 18e eeuw" : "Early 18th Century" },
     { name: t('spec.origin'), value: language === 'nl' ? "Nederland" : "Netherlands" }
   ];

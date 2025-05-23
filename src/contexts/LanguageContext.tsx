@@ -86,7 +86,7 @@ const translations = {
     
     // Hero Section
     'hero.title': 'Lieverturksdanpaaps Penning',
-    'hero.description': 'In het vuur van rebellie verklaarden Nederlandse vrijheidsstrijders \'Liever Turks dan Paaps\' — een radicale kreet voor vrijheid gegraveerd in zilver. De Geuzenpenning was niet zomaar een medaille — het was een uitdagend symbool van verzet, religieuze vrijheid en de strijd tegen tirannie.',
+    'hero.description': 'In het vuur van rebellie zeiden de Nederlandse vrijheidsstrijders \'Liever Turks dan Paaps\' — een radicale kreet voor vrijheid gegraveerd in zilver. De Geuzenpenning was niet zomaar een medaille — het was een uitdagend symbool van verzet, religieuze vrijheid en de strijd tegen tirannie.',
     'hero.button.acquire': 'Verwerf Deze Zeldzaamheid',
     'hero.button.testimonials': 'Lees Verzamelaars Getuigenissen',
     'hero.badge': 'Beperkte Beschikbaarheid',
@@ -106,7 +106,7 @@ const translations = {
     'spec.dimensions': 'Afmetingen',
     'spec.weight': 'Gewicht',
     'spec.inscription': 'Inscriptie',
-    'spec.age': 'Leeftijd',
+    'spec.age': 'Tijdperk',
     'spec.origin': 'Herkomst',
     
     // Cart
@@ -119,7 +119,7 @@ const translations = {
     'testimonials.title': 'Van Onze Verzamelaars',
     
     // Footer
-    'footer.description': 'Verzorgen van uitzonderlijke historische artefacten voor veeleisende verzamelaars sinds 2025.',
+    'footer.description': 'We verzorgen uitzonderlijke historische artefacten voor verzamelaars sinds 2025.',
     'footer.links': 'Snelle Links',
     'footer.about': 'Over Ons',
     'footer.faq': 'FAQ',
