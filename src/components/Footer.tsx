@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Instagram, Facebook, Mail, Twitter } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer id="contact" className="bg-charcoal text-cream py-16 px-6 md:px-12">
       <div className="container-custom">
@@ -10,22 +13,22 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="text-2xl font-serif mb-4">Lieverturksdanpaaps</h3>
             <p className="max-w-md text-cream/70">
-              Curating exceptional historical artifacts for discerning collectors since 2025.
+              {t('footer.description')}
             </p>
           </div>
           
           <div>
-            <h4 className="font-medium mb-4">Quick Links</h4>
+            <h4 className="font-medium mb-4">{t('footer.links')}</h4>
             <ul className="space-y-2 text-cream/70">
-              <li><a href="#" className="hover:text-gold transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.about')}</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.faq')}</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.privacy')}</a></li>
+              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.terms')}</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium mb-4">Contact</h4>
+            <h4 className="font-medium mb-4">{t('footer.contact')}</h4>
             <address className="not-italic text-cream/70">
               <p>The Hague, Netherlands</p>
               <p className="mt-2">barbaros@webunit.nl</p>
@@ -50,8 +53,8 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-cream/20 mt-12 pt-8 text-sm text-cream/50 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} Lieverturksdanpaaps. All rights reserved.</p>
-          <p className="mt-4 md:mt-0">Designed with care for collectors worldwide</p>
+          <p>&copy; {new Date().getFullYear()} Lieverturksdanpaaps. {t('footer.rights')}</p>
+          <p className="mt-4 md:mt-0">{t('footer.designed')}</p>
         </div>
       </div>
     </footer>

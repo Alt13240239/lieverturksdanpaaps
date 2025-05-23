@@ -1,25 +1,28 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/components/ui/use-toast";
 import { useCart } from '@/contexts/CartContext';
-
-// Product specifications
-const specifications = [
-  { name: "Material", value: "Silver" },
-  { name: "Dimensions", value: "35 mm × 31 mm" },
-  { name: "Weight", value: "11.27 grams" },
-  { name: "Inscription", value: "LIVER TVRCX DAN PAVS / ENDESPIT DE LA MES" },
-  { name: "Age", value: "Early 18th Century" },
-  { name: "Origin", value: "Netherlands" }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(5);
   const { toast } = useToast();
   const { addItem } = useCart();
+  const { t, language } = useLanguage();
+  
+  // Product specifications with translations
+  const specifications = [
+    { name: t('spec.material'), value: "Silver" },
+    { name: t('spec.dimensions'), value: "35 mm × 31 mm" },
+    { name: t('spec.weight'), value: "11.27 grams" },
+    { name: t('spec.inscription'), value: "LIVER TVRCX DAN PAVS / ENDESPIT DE LA MES" },
+    { name: t('spec.age'), value: language === 'nl' ? "Begin 18e eeuw" : "Early 18th Century" },
+    { name: t('spec.origin'), value: language === 'nl' ? "Nederland" : "Netherlands" }
+  ];
   
   const unitPrice = 5; // Base price in euros
   const productId = "penning-001";
@@ -49,8 +52,8 @@ const ProductSection = () => {
     });
 
     toast({
-      title: "Added to Cart",
-      description: `${quantity} Penning(s) added - €${totalPrice.toLocaleString()}`,
+      title: t('cart.added'),
+      description: `${quantity} ${t('cart.pennings')} - €${totalPrice.toLocaleString()}`,
       duration: 3000,
     });
   };
@@ -73,29 +76,29 @@ const ProductSection = () => {
           
           <div className="space-y-10">
             <div>
-              <h2 className="text-3xl md:text-4xl font-serif mb-4">The Penning</h2>
-              <p className="text-sm uppercase tracking-wider text-charcoal/60 mb-6">Limited Edition • Museum Quality</p>
+              <h2 className="text-3xl md:text-4xl font-serif mb-4">{t('product.title')}</h2>
+              <p className="text-sm uppercase tracking-wider text-charcoal/60 mb-6">{t('product.subtitle')}</p>
               
               <p className="leading-relaxed mb-6">
-                One of the most striking artifacts from the Dutch Revolt is the Geuzenpenning, a silver medal worn by the Watergeuzen (Sea Beggars)—Protestant privateers who fought against Spanish Catholic rule in the 16th century.
+                {t('product.description1')}
               </p>
               
               <p className="leading-relaxed mb-6">
-                A particularly provocative version of this medal bears the inscription:
+                {t('product.description2')}
               </p>
               
               <p className="leading-relaxed mb-6 text-center font-serif italic text-xl">
-                "Liever Turks dan Paaps"<br/>
-                ("Rather Turkish than Papist")
+                "{t('product.quote')}"{t('product.quote.translation') && <br/>}
+                {t('product.quote.translation')}
               </p>
               
               <p className="leading-relaxed mb-6">
-                This bold statement captured the intense anti-Catholic sentiment of the time. It reflected a radical preference for the perceived religious tolerance of the Muslim Ottoman Empire over the oppressive Catholic regime of the Spanish crown and the Inquisition.
+                {t('product.description3')}
               </p>
             </div>
             
             <div>
-              <h3 className="font-medium mb-3">Specifications</h3>
+              <h3 className="font-medium mb-3">{t('product.specifications')}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {specifications.map((spec, index) => (
                   <div key={index} className="flex justify-between border-b pb-2">
@@ -136,13 +139,13 @@ const ProductSection = () => {
                 className="w-full py-6 text-base btn-primary"
                 onClick={handleAddToCart}
               >
-                Add to Cart
+                {t('cart.add')}
               </Button>
               
               <div className="flex justify-between text-xs text-charcoal/60 mt-4">
-                <span>Free worldwide shipping</span>
-                <span>30-day return policy</span>
-                <span>Secure payment</span>
+                <span>{t('cart.freeShipping')}</span>
+                <span>{t('cart.returnPolicy')}</span>
+                <span>{t('cart.securePayment')}</span>
               </div>
             </div>
           </div>

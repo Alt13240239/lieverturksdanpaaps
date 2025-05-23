@@ -1,29 +1,38 @@
 
 import React from 'react';
-
-const testimonials = [
-  {
-    quote: "The Lieverturksdanpaaps Penning is the centerpiece of my numismatic collection. Its historical significance and pristine condition make it a true treasure.",
-    author: "Dr. Helena Voss",
-    title: "Historian & Collector"
-  },
-  {
-    quote: "In my 40 years of collecting historical coins, I've rarely encountered a specimen with such exquisite detail and provenance. A remarkable acquisition.",
-    author: "James Whitfield",
-    title: "Private Collector"
-  },
-  {
-    quote: "The authentication process and documentation provided with my Penning gave me complete confidence in its authenticity. A worthy investment for any serious collector.",
-    author: "Maria Fernandez",
-    title: "Numismatic Society Member"
-  }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const TestimonialsSection = () => {
+  const { t, language } = useLanguage();
+  
+  const testimonials = [
+    {
+      quote: language === 'nl' 
+        ? "De Lieverturksdanpaaps Penning is het middelpunt van mijn numismatische collectie. De historische betekenis en onberispelijke staat maken het een ware schat."
+        : "The Lieverturksdanpaaps Penning is the centerpiece of my numismatic collection. Its historical significance and pristine condition make it a true treasure.",
+      author: "Dr. Helena Voss",
+      title: language === 'nl' ? "Historicus & Verzamelaar" : "Historian & Collector"
+    },
+    {
+      quote: language === 'nl'
+        ? "In mijn 40 jaar als verzamelaar van historische munten ben ik zelden een exemplaar tegengekomen met zulke voortreffelijke details en herkomst. Een opmerkelijke aanwinst."
+        : "In my 40 years of collecting historical coins, I've rarely encountered a specimen with such exquisite detail and provenance. A remarkable acquisition.",
+      author: "James Whitfield",
+      title: language === 'nl' ? "Privé Verzamelaar" : "Private Collector"
+    },
+    {
+      quote: language === 'nl'
+        ? "Het authenticatieproces en de documentatie die bij mijn Penning werd geleverd, gaven me volledig vertrouwen in de authenticiteit ervan. Een waardevolle investering voor elke serieuze verzamelaar."
+        : "The authentication process and documentation provided with my Penning gave me complete confidence in its authenticity. A worthy investment for any serious collector.",
+      author: "Maria Fernandez",
+      title: language === 'nl' ? "Lid Numismatische Vereniging" : "Numismatic Society Member"
+    }
+  ];
+
   return (
     <section id="testimonials" className="section bg-cream">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-serif text-center mb-16">From Our Collectors</h2>
+        <h2 className="text-3xl md:text-4xl font-serif text-center mb-16">{t('testimonials.title')}</h2>
         
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
