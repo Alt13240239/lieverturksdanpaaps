@@ -26,7 +26,7 @@ const ProductSection = () => {
   
   const unitPrice = 5; // Base price in euros
   const productId = "penning-001";
-  const productName = "Lieverturksdanpaaps Penning";
+  const productName = "Liever Turks dan Paaps Penning";
   const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";
   
   useEffect(() => {
@@ -67,7 +67,7 @@ const ProductSection = () => {
               <AspectRatio ratio={1/1} className="bg-white">
                 <img 
                   src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
-                  alt="Lieverturksdanpaaps Penning Detail" 
+                  alt="Liever Turks dan Paaps Penning Detail" 
                   className="object-contain w-full h-full rounded-sm" 
                 />
               </AspectRatio>

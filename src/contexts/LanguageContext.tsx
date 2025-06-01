@@ -18,7 +18,7 @@ const translations = {
     'nav.purchase': 'Purchase',
     
     // Hero Section
-    'hero.title': 'Lieverturksdanpaaps Penning',
+    'hero.title': 'Liever Turks dan Paaps Penning',
     'hero.description': 'In the heat of rebellion, Dutch freedom fighters declared \'Liever Turks dan Paaps\' (Rather Turkish than Papist) —a radical cry for liberty etched into silver. The Geuzenpenning wasn\'t just a medal—it was a defiant symbol of resistance, religious freedom, and the fight against tyranny.',
     'hero.button.acquire': 'Acquire This Rarity',
     'hero.button.testimonials': 'Read Testimonials',
@@ -84,7 +84,7 @@ const translations = {
     'nav.purchase': 'Kopen',
     
     // Hero Section
-    'hero.title': 'Lieverturksdanpaaps Penning',
+    'hero.title': 'Liever Turks dan Paaps Penning',
     'hero.description': 'In het vuur van rebellie zeiden de Nederlandse vrijheidsstrijders \'Liever Turks dan Paaps\' — een radicale kreet voor vrijheid gegraveerd in zilver. De Geuzenpenning was niet zomaar een medaille — het was een uitdagend symbool van verzet, religieuze vrijheid en de strijd tegen tirannie.',
     'hero.button.acquire': 'Verwerf Deze Zeldzaamheid',
     'hero.button.testimonials': 'Lees Getuigenissen',

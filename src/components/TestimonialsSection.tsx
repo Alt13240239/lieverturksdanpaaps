@@ -8,8 +8,8 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       quote: language === 'nl' 
-        ? "De Lieverturksdanpaaps Penning is het middelpunt van mijn numismatische collectie. De historische betekenis en onberispelijke staat maken het een ware schat."
-        : "The Lieverturksdanpaaps Penning is the centerpiece of my numismatic collection. Its historical significance and pristine condition make it a true treasure.",
+        ? "De Liever Turks dan Paaps Penning is het middelpunt van mijn numismatische collectie. De historische betekenis en onberispelijke staat maken het een ware schat."
+        : "The Liever Turks dan Paaps Penning is the centerpiece of my numismatic collection. Its historical significance and pristine condition make it a true treasure.",
       author: "Dr. Helena Voss",
       title: language === 'nl' ? "Historicus & Verzamelaar" : "Historian & Collector"
     },

@@ -11,8 +11,8 @@ const Navbar = ({ className }: { className?: string }) => {
   return (
     <header className={cn('fixed top-0 left-0 right-0 z-50 py-6 px-6 md:px-12 bg-cream/90 backdrop-blur-sm', className)}>
       <div className="flex items-center justify-between max-w-6xl mx-auto">
-        <div className="text-xl font-serif font-medium">
-          <a href="/" className="text-charcoal hover:text-gold transition-colors">Lieverturksdanpaaps</a>
+        <div className="text-lg md:text-xl font-serif font-medium">
+          <a href="/" className="text-charcoal hover:text-gold transition-colors">Liever Turks dan Paaps</a>
         </div>
         
         <nav className="hidden md:flex space-x-8 text-sm">

@@ -10,7 +10,7 @@ const HeroSection = () => {
     <section className="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 bg-cream">
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-6 leading-tight">
             {t('hero.title')}
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-md leading-relaxed text-charcoal/80">
@@ -38,7 +38,7 @@ const HeroSection = () => {
           <div className="aspect-square relative overflow-hidden bg-cream mb-6">
             <img 
               src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
-              alt="Lieverturksdanpaaps Penning - Rare Collector's Item" 
+              alt="Liever Turks dan Paaps Penning - Rare Collector's Item" 
               className="object-contain w-full h-full"
             />
             <div className="absolute bottom-4 right-4 bg-cream/90 text-charcoal text-xs py-1 px-3 rounded-sm">
