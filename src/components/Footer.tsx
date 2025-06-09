@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-charcoal text-cream py-16 px-6 md:px-12">
       <div className="container-custom">
-        <div className="grid md:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-3 gap-10">
           <div className="md:col-span-2">
             <h3 className="text-xl md:text-2xl font-serif mb-4 leading-tight">Liever Turks dan Paaps</h3>
             <p className="max-w-md text-cream/70">
@@ -25,30 +25,6 @@ const Footer = () => {
               <li><a href="#" className="hover:text-gold transition-colors">{t('footer.privacy')}</a></li>
               <li><a href="#" className="hover:text-gold transition-colors">{t('footer.terms')}</a></li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-medium mb-4">{t('footer.contact')}</h4>
-            <address className="not-italic text-cream/70">
-              <p>The Hague, Netherlands</p>
-              <p className="mt-2">barbaros@webunit.nl</p>
-              <p className="mt-2">+31 20 123 4567</p>
-            </address>
-            
-            <div className="flex space-x-4 mt-6">
-              <a href="#" aria-label="Instagram" className="text-cream/70 hover:text-gold transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="#" aria-label="Facebook" className="text-cream/70 hover:text-gold transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" aria-label="Twitter" className="text-cream/70 hover:text-gold transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="mailto:barbaros@webunit.nl" aria-label="Email" className="text-cream/70 hover:text-gold transition-colors">
-                <Mail size={20} />
-              </a>
-            </div>
           </div>
         </div>
         
