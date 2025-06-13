@@ -19,14 +19,14 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 relative z-10">
             <Button 
               variant="default"
-              className="btn-primary"
+              className="btn-primary btn-shine"
               onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.button.acquire')}
             </Button>
             <Button 
               variant="outline"
-              className="border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
+              className="border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300 btn-shine"
               onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.button.testimonials')}

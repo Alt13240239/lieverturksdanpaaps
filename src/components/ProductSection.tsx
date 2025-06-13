@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
@@ -9,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(5);
+  const [totalPrice, setTotalPrice] = useState(0.01);
   const { toast } = useToast();
   const { addItem } = useCart();
   const { t, language } = useLanguage();
@@ -24,7 +23,7 @@ const ProductSection = () => {
     { name: t('spec.origin'), value: language === 'nl' ? "Nederland" : "Netherlands" }
   ];
   
-  const unitPrice = 5; // Base price in euros
+  const unitPrice = 0.01; // Base price in euros
   const productId = "penning-001";
   const productName = "Liever Turks dan Paaps Penning";
   const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";
@@ -53,7 +52,7 @@ const ProductSection = () => {
 
     toast({
       title: t('cart.added'),
-      description: `${quantity} ${t('cart.pennings')} - €${totalPrice.toLocaleString()}`,
+      description: `${quantity} ${t('cart.pennings')} - €${totalPrice.toFixed(2)}`,
       duration: 3000,
     });
   };
@@ -112,7 +111,7 @@ const ProductSection = () => {
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="text-3xl font-serif">€{totalPrice.toLocaleString()}</span>
+                <span className="text-3xl font-serif">€{totalPrice.toFixed(2)}</span>
                 <div className="flex items-center border border-charcoal">
                   <button 
                     className="w-10 h-10 flex items-center justify-center border-r border-charcoal/50 hover:bg-charcoal/5 transition-colors"
@@ -135,7 +134,7 @@ const ProductSection = () => {
               </div>
               
               <Button 
-                className="w-full py-6 text-base btn-primary"
+                className="w-full py-6 text-base btn-primary btn-shine"
                 onClick={handleAddToCart}
               >
                 {t('cart.add')}

@@ -26,7 +26,7 @@ const Navbar = ({ className }: { className?: string }) => {
           <CartIcon />
           <a 
             href="#product" 
-            className="text-sm py-1.5 px-4 border border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
+            className="text-sm py-1.5 px-4 border border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300 btn-shine relative overflow-hidden"
           >
             {t('nav.purchase')}
           </a>
