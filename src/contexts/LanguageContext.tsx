@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'en' | 'nl';
@@ -71,6 +72,19 @@ const translations = {
     'cart.added': 'Added to Cart',
     'cart.pennings': 'Penning(s) added',
     
+    // Contact Form
+    'contact.title': 'Contact Form',
+    'contact.name': 'Please fill in your name:',
+    'contact.email': 'Please fill in your email:',
+    'contact.message': 'If you have anything to say, fill that in here:',
+    'contact.namePlaceholder': 'Name:',
+    'contact.emailPlaceholder': 'email:',
+    'contact.messagePlaceholder': 'message:',
+    'contact.send': 'Send',
+    'contact.sending': 'Sending...',
+    'contact.thankYou': 'Thank you for your message!',
+    'contact.response': "We'll get back to you soon.",
+    
     // Language
     'language': 'Language',
     'language.nl': 'Nederlands',
@@ -136,6 +150,19 @@ const translations = {
     'cart.clear': 'Winkelwagen Legen',
     'cart.added': 'Toegevoegd aan Winkelwagen',
     'cart.pennings': 'Penning(en) toegevoegd',
+    
+    // Contact Form
+    'contact.title': 'Contact Form',
+    'contact.name': 'Please fill in your name:',
+    'contact.email': 'Please fill in your email:',
+    'contact.message': 'If you have anything to say, fill that in here:',
+    'contact.namePlaceholder': 'Name:',
+    'contact.emailPlaceholder': 'email:',
+    'contact.messagePlaceholder': 'message:',
+    'contact.send': 'Send',
+    'contact.sending': 'Sending...',
+    'contact.thankYou': 'Thank you for your message!',
+    'contact.response': "We'll get back to you soon.",
     
     // Language
     'language': 'Taal',

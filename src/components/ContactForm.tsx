@@ -20,15 +20,31 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
-    
-    // Hide thank you message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      // Create mailto link with form data
+      const subject = encodeURIComponent('Contact Form Submission - Liever Turks dan Paaps');
+      const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Message: ${formData.message}
+      `);
+      
+      const mailtoLink = `mailto:info@lieverturksdanpaaps.nl?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+      
+      // Simulate processing time
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Hide thank you message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,10 +59,10 @@ const ContactForm = () => {
       <div className="text-center py-4">
         <div className="bg-gold/10 border border-gold/20 rounded-md p-4 mb-4">
           <p className="text-gold font-medium">
-            {t('contact.thankYou') || 'Thank you for your message!'}
+            {t('contact.thankYou')}
           </p>
           <p className="text-cream/70 text-sm mt-1">
-            {t('contact.response') || "We'll get back to you soon."}
+            {t('contact.response')}
           </p>
         </div>
       </div>
@@ -55,11 +71,11 @@ const ContactForm = () => {
 
   return (
     <div>
-      <h4 className="font-medium mb-4">{t('contact.title') || 'Get in Touch'}</h4>
+      <h4 className="font-medium mb-4">{t('contact.title')}</h4>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <Label htmlFor="name" className="text-cream/70 text-sm">
-            {t('contact.name') || 'Name'} <span className="text-cream/50">({t('contact.optional') || 'optional'})</span>
+            {t('contact.name')}
           </Label>
           <Input
             id="name"
@@ -68,13 +84,13 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20"
-            placeholder={t('contact.namePlaceholder') || 'Your name'}
+            placeholder={t('contact.namePlaceholder')}
           />
         </div>
         
         <div>
           <Label htmlFor="email" className="text-cream/70 text-sm">
-            {t('contact.email') || 'Email'} <span className="text-gold">*</span>
+            {t('contact.email')} <span className="text-gold">*</span>
           </Label>
           <Input
             id="email"
@@ -84,13 +100,13 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20"
-            placeholder={t('contact.emailPlaceholder') || 'your@email.com'}
+            placeholder={t('contact.emailPlaceholder')}
           />
         </div>
         
         <div>
           <Label htmlFor="message" className="text-cream/70 text-sm">
-            {t('contact.message') || 'Message'} <span className="text-cream/50">({t('contact.optional') || 'optional'})</span>
+            {t('contact.message')}
           </Label>
           <Textarea
             id="message"
@@ -99,7 +115,7 @@ const ContactForm = () => {
             onChange={handleChange}
             rows={3}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20 resize-none"
-            placeholder={t('contact.messagePlaceholder') || 'Tell us about your interest in the penning...'}
+            placeholder={t('contact.messagePlaceholder')}
           />
         </div>
         
@@ -108,7 +124,7 @@ const ContactForm = () => {
           disabled={isSubmitting || !formData.email}
           className="w-full bg-gold hover:bg-gold/90 text-charcoal font-medium py-2 px-4 rounded-md transition-colors"
         >
-          {isSubmitting ? (t('contact.sending') || 'Sending...') : (t('contact.send') || 'Send Message')}
+          {isSubmitting ? t('contact.sending') : t('contact.send')}
         </Button>
       </form>
     </div>
