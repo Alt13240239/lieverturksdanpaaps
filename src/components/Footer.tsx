@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Instagram, Facebook, Mail, Twitter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ContactForm from '@/components/ContactForm';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -18,13 +18,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-medium mb-4">{t('footer.links')}</h4>
-            <ul className="space-y-2 text-cream/70">
-              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.about')}</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.faq')}</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.privacy')}</a></li>
-              <li><a href="#" className="hover:text-gold transition-colors">{t('footer.terms')}</a></li>
-            </ul>
+            <ContactForm />
           </div>
         </div>
         
