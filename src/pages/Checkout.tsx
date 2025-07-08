@@ -68,12 +68,8 @@ const Checkout = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: language === 'nl' ? "Bestelling Geplaatst" : "Order Placed",
-      description: language === 'nl' ? "Bedankt voor uw aankoop!" : "Thank you for your purchase!",
-    });
-    clearCart();
-    navigate('/');
+    // Redirect to Stripe Payment Link
+    window.open('https://buy.stripe.com/4gMdRagDndM242j5M914400', '_blank');
   };
 
   if (items.length === 0) {

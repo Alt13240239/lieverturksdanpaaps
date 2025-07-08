@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(0.01);
+  const [totalPrice, setTotalPrice] = useState(0.50);
   const { toast } = useToast();
   const { addItem } = useCart();
   const { t, language } = useLanguage();
@@ -23,7 +23,7 @@ const ProductSection = () => {
     { name: t('spec.origin'), value: language === 'nl' ? "Nederland" : "Netherlands" }
   ];
   
-  const unitPrice = 0.01; // Base price in euros
+  const unitPrice = 0.50; // Base price in euros
   const productId = "penning-001";
   const productName = "Liever Turks dan Paaps Penning";
   const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";

@@ -66,11 +66,8 @@ const CartDrawer = () => {
   };
 
   const handleCheckout = () => {
-    toast({
-      title: t('cart.checkout'),
-      description: "Redirecting to checkout page",
-    });
-    navigate('/checkout');
+    // Redirect to Stripe Payment Link
+    window.open('https://buy.stripe.com/4gMdRagDndM242j5M914400', '_blank');
   };
 
   const CartContent = () => (
