@@ -100,7 +100,7 @@ Message: ${formData.message}
             value={formData.email}
             onChange={handleChange}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20"
-            placeholder={t('contact.emailPlaceholder')}
+            placeholder="test@gmail.com"
           />
         </div>
         
@@ -115,7 +115,7 @@ Message: ${formData.message}
             onChange={handleChange}
             rows={3}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20 resize-none"
-            placeholder={t('contact.messagePlaceholder')}
+            placeholder="Write your message here:"
           />
         </div>
         
