@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/0254e1e5-77a9-479e-b130-d83df4650129.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
@@ -38,7 +37,7 @@ const HeroSection = () => {
         <div className="order-1 md:order-2 animate-fade-in">
           <div className="aspect-square relative overflow-hidden bg-cream mb-6">
             <img 
-                src={heroImage}
+              src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
               alt="Liever Turks dan Paaps Penning - Rare Collector's Item" 
               className="object-contain w-full h-full"
             />
