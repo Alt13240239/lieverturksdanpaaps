@@ -67,9 +67,9 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				cream: '#F8F5F0',
-				gold: '#D4AF37',
-				charcoal: '#333333',
+				cream: 'hsl(var(--cream))',
+				gold: 'hsl(var(--gold))',
+				charcoal: 'hsl(var(--charcoal))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
