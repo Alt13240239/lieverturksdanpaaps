@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import heroImage from '@/images/hero-image.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
