@@ -38,7 +38,7 @@ const HeroSection = () => {
         <div className="order-1 md:order-2 animate-fade-in">
           <div className="aspect-square relative overflow-hidden bg-cream mb-6">
             <img 
-              src="{heroImage}" 
+              src={heroImage} 
               alt="Liever Turks dan Paaps Penning - Rare Collector's Item" 
               className="object-contain w-full h-full"
             />

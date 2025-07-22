@@ -5,6 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { useToast } from "@/components/ui/use-toast";
 import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import productImage from '@/images/product-image.png';
 
 const ProductSection = () => {
   const [quantity, setQuantity] = useState(1);
@@ -26,7 +27,6 @@ const ProductSection = () => {
   const unitPrice = 0.50; // Base price in euros
   const productId = "penning-001";
   const productName = "Liever Turks dan Paaps Penning";
-  const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";
   
   useEffect(() => {
     // Update total price when quantity changes
@@ -65,7 +65,7 @@ const ProductSection = () => {
             <div className="aspect-square overflow-hidden">
               <AspectRatio ratio={1/1} className="bg-white">
                 <img 
-                  src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
+                  src={productImage} 
                   alt="Liever Turks dan Paaps Penning Detail" 
                   className="object-contain w-full h-full rounded-sm" 
                 />
