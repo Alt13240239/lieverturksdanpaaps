@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lieverturksdanpaaps.nl",
+  "homepage": "https://www.lieverturksdanpaaps.nl",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
