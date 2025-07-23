@@ -65,7 +65,7 @@ const ProductSection = () => {
             <div className="aspect-square overflow-hidden">
               <AspectRatio ratio={1/1} className="bg-white">
                 <img 
-                  src="lieverturksdanpaaps/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
+                  src="lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
                   alt="Liever Turks dan Paaps Penning Detail" 
                   className="object-contain w-full h-full rounded-sm" 
                 />
