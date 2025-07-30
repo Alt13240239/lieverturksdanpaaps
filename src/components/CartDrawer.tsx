@@ -67,7 +67,7 @@ const CartDrawer = () => {
 
   const handleCheckout = () => {
     // Redirect to Stripe Payment Link
-    window.open('https://buy.stripe.com/4gMdRagDndM242j5M914400', '_blank');
+    window.open('https://buy.stripe.com/aFa9AU72NbDUcyPa2p14401', '_blank');
   };
 
   const CartContent = () => (
