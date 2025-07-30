@@ -30,21 +30,21 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section id="testimonials" className="section bg-cream">
+    <section id="testimonials" className="section bg-cream" role="region" aria-labelledby="testimonials-heading">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-serif text-center mb-16">{t('testimonials.title')}</h2>
+        <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-serif text-center mb-16">{t('testimonials.title')}</h2>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8" role="list">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white p-8 animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
+            <article key={index} className="bg-white p-8 animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }} role="listitem">
               <blockquote className="mb-6 italic text-charcoal/80">
                 "{testimonial.quote}"
               </blockquote>
-              <div>
-                <p className="font-medium">{testimonial.author}</p>
+              <footer>
+                <cite className="font-medium not-italic">{testimonial.author}</cite>
                 <p className="text-sm text-charcoal/60">{testimonial.title}</p>
-              </div>
-            </div>
+              </footer>
+            </article>
           ))}
         </div>
       </div>

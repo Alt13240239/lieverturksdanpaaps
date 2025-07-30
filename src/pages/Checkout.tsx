@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -17,6 +17,22 @@ const Checkout = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    // Set page-specific meta information for SEO
+    document.title = language === 'nl' 
+      ? "Afrekenen - Liever Turks dan Paaps Penning Bestellen"
+      : "Checkout - Order Liever Turks dan Paaps Penning";
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 
+        language === 'nl'
+          ? "Voltooi uw bestelling van de authentieke Liever Turks dan Paaps Geuzenpenning. Veilige betaling en gratis wereldwijde verzending."
+          : "Complete your order for the authentic Liever Turks dan Paaps Geuzenpenning. Secure payment and free worldwide shipping."
+      );
+    }
+  }, [language]);
 
   const CheckoutItem = ({ item }: { item: any }) => {
     return (

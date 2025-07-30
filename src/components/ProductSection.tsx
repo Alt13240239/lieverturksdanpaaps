@@ -58,25 +58,29 @@ const ProductSection = () => {
   };
 
   return (
-    <section id="product" className="section bg-white">
-      <div className="container-custom">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <div>
-            <div className="aspect-square overflow-hidden">
-              <AspectRatio ratio={1/1} className="bg-white">
-                <img 
-                  src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
-                  alt="Liever Turks dan Paaps Penning Detail" 
-                  className="object-contain w-full h-full rounded-sm" 
-                />
-              </AspectRatio>
-            </div>
-          </div>
-          
-          <div className="space-y-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-serif mb-4">{t('product.title')}</h2>
-              <p className="text-sm uppercase tracking-wider text-charcoal/60 mb-6">{t('product.subtitle')}</p>
+    <main>
+      <section id="product" className="section bg-white" role="main">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <figure>
+              <div className="aspect-square overflow-hidden">
+                <AspectRatio ratio={1/1} className="bg-white">
+                  <img 
+                    src="/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png" 
+                    alt="Authentieke Liever Turks dan Paaps Geuzenpenning - Nederlandse Opstand zilveren penning detail foto" 
+                    className="object-contain w-full h-full rounded-sm"
+                    loading="lazy"
+                    width="400"
+                    height="400"
+                  />
+                </AspectRatio>
+              </div>
+            </figure>
+            
+            <article className="space-y-10">
+              <header>
+                <h2 className="text-3xl md:text-4xl font-serif mb-4">{t('product.title')}</h2>
+                <p className="text-sm uppercase tracking-wider text-charcoal/60 mb-6">{t('product.subtitle')}</p>
               
               <p className="leading-relaxed mb-6">
                 {t('product.description1')}
@@ -93,7 +97,7 @@ const ProductSection = () => {
               <p className="leading-relaxed mb-6">
                 {t('product.description3')}
               </p>
-            </div>
+              </header>
             
             <div>
               <h3 className="font-medium mb-3">{t('product.specifications')}</h3>
@@ -146,10 +150,11 @@ const ProductSection = () => {
                 <span>{t('cart.securePayment')}</span>
               </div>
             </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

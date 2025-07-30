@@ -8,9 +8,9 @@ const HeroSection = () => {
   const { t } = useLanguage();
   
   return (
-    <section className="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 bg-cream">
+    <section className="min-h-screen flex items-center pt-24 pb-12 px-6 md:px-12 bg-cream" role="banner">
       <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-        <div className="order-2 md:order-1 animate-fade-in">
+        <header className="order-2 md:order-1 animate-fade-in">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium mb-6 leading-tight">
             {t('hero.title')}
           </h1>
@@ -33,7 +33,7 @@ const HeroSection = () => {
               {t('hero.button.testimonials')}
             </Button>
           </div>
-        </div>
+        </header>
         
         <div className="order-1 md:order-2 animate-fade-in">
           <div className="aspect-square relative overflow-hidden bg-cream mb-6">
