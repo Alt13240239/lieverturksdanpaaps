@@ -16,9 +16,24 @@ const Navbar = ({ className }: { className?: string }) => {
         </div>
         
         <nav className="hidden md:flex space-x-8 text-sm">
-          <a href="#product" className="hover:text-gold transition-colors">{t('nav.product')}</a>
-          <a href="#testimonials" className="hover:text-gold transition-colors">{t('nav.testimonials')}</a>
-          <a href="#contact" className="hover:text-gold transition-colors">{t('nav.contact')}</a>
+          <button 
+            onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth' })}
+            className="hover:text-gold transition-colors"
+          >
+            {t('nav.product')}
+          </button>
+          <button 
+            onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+            className="hover:text-gold transition-colors"
+          >
+            {t('nav.testimonials')}
+          </button>
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="hover:text-gold transition-colors"
+          >
+            {t('nav.contact')}
+          </button>
         </nav>
         
         <div className="flex items-center gap-4">
