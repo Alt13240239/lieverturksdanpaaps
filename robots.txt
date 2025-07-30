@@ -1,8 +1,21 @@
+# Robots.txt for Liever Turks dan Paaps
+# Allow all web crawlers to access all content
+
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://example.com/sitemap.xml
+
+# Specific crawlers
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +23,7 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Block unnecessary file types for SEO
+Disallow: *.json$
+Disallow: *.js$
+Disallow: *.css$
