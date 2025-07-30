@@ -24,12 +24,6 @@ const Navbar = ({ className }: { className?: string }) => {
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
           <CartIcon />
-          <a 
-            href="#product" 
-            className="text-sm py-1.5 px-4 border border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300 btn-shine relative overflow-hidden"
-          >
-            {t('nav.purchase')}
-          </a>
         </div>
       </div>
     </header>
