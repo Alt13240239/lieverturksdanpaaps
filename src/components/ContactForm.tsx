@@ -5,9 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactForm = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,29 +24,50 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Create mailto link with form data
-      const subject = encodeURIComponent('Contact Form Submission - Liever Turks dan Paaps');
-      const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Message: ${formData.message}
-      `);
-      
-      const mailtoLink = `mailto:info@lieverturksdanpaaps.nl?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-      
-      // Simulate processing time
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      // Validate email field
+      if (!formData.email || !formData.email.includes('@')) {
+        toast({
+          title: "Invalid Email",
+          description: "Please enter a valid email address.",
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send email via edge function
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
       setIsSubmitted(true);
       setIsSubmitting(false);
       setFormData({ name: '', email: '', message: '' });
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll get back to you soon.",
+      });
       
       // Hide thank you message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
+      
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 
