@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
-import { useToast } from "@/components/ui/use-toast";
-import { useCart } from '@/contexts/CartContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ProductSection = () => {
-  const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(0.50);
-  const { toast } = useToast();
-  const { addItem } = useCart();
   const { t, language } = useLanguage();
   
   // Product specifications with translations
@@ -24,37 +18,10 @@ const ProductSection = () => {
   ];
   
   const unitPrice = 0.50; // Base price in euros
-  const productId = "penning-001";
-  const productName = "Liever Turks dan Paaps Penning";
-  const productImage = "/lovable-uploads/0254e1e5-77a9-479e-b130-d83df4650129.png";
-  
-  useEffect(() => {
-    // Update total price when quantity changes
-    setTotalPrice(unitPrice * quantity);
-  }, [quantity, unitPrice]);
-  
-  const increaseQuantity = () => {
-    setQuantity(prev => Math.min(prev + 1, 10));
-  };
-  
-  const decreaseQuantity = () => {
-    setQuantity(prev => Math.max(prev - 1, 1));
-  };
+  const stripePaymentUrl = "https://buy.stripe.com/eVq5kE3QB5fwgP53E114402";
 
-  const handleAddToCart = () => {
-    addItem({
-      id: productId,
-      name: productName,
-      price: unitPrice,
-      quantity: quantity,
-      image: productImage
-    });
-
-    toast({
-      title: t('cart.added'),
-      description: `${quantity} ${t('cart.pennings')} - €${totalPrice.toFixed(2)}`,
-      duration: 3000,
-    });
+  const handleBuyNow = () => {
+    window.open(stripePaymentUrl, '_blank');
   };
 
   return (
@@ -114,40 +81,19 @@ const ProductSection = () => {
             <Separator className="bg-charcoal/10" />
             
             <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <span className="text-3xl font-serif">€{totalPrice.toFixed(2)}</span>
-                <div className="flex items-center border border-charcoal">
-                  <button 
-                    className="w-10 h-10 flex items-center justify-center border-r border-charcoal/50 hover:bg-charcoal/5 transition-colors"
-                    onClick={decreaseQuantity}
-                    disabled={quantity <= 1}
-                    aria-label="Decrease quantity"
-                  >
-                    −
-                  </button>
-                  <span className="w-12 text-center">{quantity}</span>
-                  <button 
-                    className="w-10 h-10 flex items-center justify-center border-l border-charcoal/50 hover:bg-charcoal/5 transition-colors"
-                    onClick={increaseQuantity}
-                    disabled={quantity >= 10}
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
-                </div>
+              <div className="flex justify-center">
+                <span className="text-3xl font-serif">€{unitPrice.toFixed(2)}</span>
               </div>
               
               <Button 
                 className="w-full py-6 text-base btn-primary btn-shine"
-                onClick={handleAddToCart}
+                onClick={handleBuyNow}
               >
                 {t('cart.add')}
               </Button>
               
-              <div className="flex justify-between text-xs text-charcoal/60 mt-4">
-                <span>{t('cart.freeShipping')}</span>
-                <span>{t('cart.returnPolicy')}</span>
-                <span>{t('cart.securePayment')}</span>
+              <div className="text-center text-sm text-charcoal/60 mt-4">
+                <span>{t('cart.quantityNote')}</span>
               </div>
             </div>
             </article>

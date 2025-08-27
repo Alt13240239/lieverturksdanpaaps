@@ -44,10 +44,8 @@ const translations = {
     'spec.origin': 'Origin',
     
     // Cart
-    'cart.add': 'Add to Cart',
-    'cart.freeShipping': 'Free worldwide shipping',
-    'cart.returnPolicy': '30-day return policy',
-    'cart.securePayment': 'Secure payment',
+    'cart.add': 'Buy Now',
+    'cart.quantityNote': 'You can choose the desired quantity during checkout.',
     
     // Testimonials
     'testimonials.title': 'From Our Collectors',
@@ -123,10 +121,8 @@ const translations = {
     'spec.origin': 'Herkomst',
     
     // Cart
-    'cart.add': 'Aan Winkelwagen Toevoegen',
-    'cart.freeShipping': 'Gratis wereldwijde verzending',
-    'cart.returnPolicy': '30 dagen retourbeleid',
-    'cart.securePayment': 'Veilige betaling',
+    'cart.add': 'Koop Nu',
+    'cart.quantityNote': 'Je kunt de gewenste hoeveelheid kiezen tijdens het afrekenen.',
     
     // Testimonials
     'testimonials.title': 'Van Onze Verzamelaars',
