@@ -26,6 +26,7 @@ const ContactForm = () => {
     try {
       // Validate email field
       if (!formData.email || !formData.email.includes('@')) {
+        console.log("Email validation failed:", formData.email);
         toast({
           title: "Invalid Email",
           description: "Please enter a valid email address.",
@@ -34,6 +35,12 @@ const ContactForm = () => {
         setIsSubmitting(false);
         return;
       }
+
+      console.log("Submitting contact form with data:", {
+        name: formData.name ? "provided" : "missing",
+        email: formData.email ? "provided" : "missing", 
+        message: formData.message ? "provided" : "missing"
+      });
 
       // Send email via edge function
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
@@ -44,7 +51,10 @@ const ContactForm = () => {
         }
       });
 
+      console.log("Edge function response:", { data, error });
+
       if (error) {
+        console.error("Edge function error:", error);
         throw error;
       }
 
@@ -59,13 +69,33 @@ const ContactForm = () => {
       
       // Hide thank you message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
       
+      // Provide more specific error messages
+      let errorMessage = "Failed to send message. Please try again.";
+      let errorTitle = "Error";
+      
+      if (error?.message) {
+        console.log("Specific error message:", error.message);
+        if (error.message.includes('fetch')) {
+          errorMessage = "Network error. Please check your connection and try again.";
+          errorTitle = "Connection Error";
+        } else if (error.message.includes('timeout')) {
+          errorMessage = "Request timed out. Please try again.";
+          errorTitle = "Timeout Error";
+        } else if (error.message.includes('404')) {
+          errorMessage = "Service unavailable. Please try again later.";
+          errorTitle = "Service Error";
+        } else {
+          errorMessage = `Error: ${error.message}`;
+        }
+      }
+      
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
+        title: errorTitle,
+        description: errorMessage,
         variant: "destructive",
       });
     }

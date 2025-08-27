@@ -16,16 +16,39 @@ interface ContactEmailRequest {
 }
 
 const handler = async (req: Request): Promise<Response> => {
+  console.log("Edge function called with method:", req.method);
+  
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
+    console.log("Handling CORS preflight");
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { name, email, message }: ContactEmailRequest = await req.json();
+    console.log("Processing contact form request");
+    const requestBody = await req.text();
+    console.log("Raw request body:", requestBody);
+    
+    let parsedBody: ContactEmailRequest;
+    try {
+      parsedBody = JSON.parse(requestBody);
+    } catch (parseError) {
+      console.error("JSON parse error:", parseError);
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON in request body" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    const { name, email, message } = parsedBody;
+    console.log("Parsed form data:", { name: name ? "provided" : "missing", email: email ? "provided" : "missing", message: message ? "provided" : "missing" });
 
     // Validate required fields
     if (!email || !email.includes('@')) {
+      console.log("Email validation failed:", email);
       return new Response(
         JSON.stringify({ error: "Valid email is required" }),
         {
@@ -35,7 +58,22 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Check if Resend API key is available
+    const apiKey = Deno.env.get("RESEND_API_KEY");
+    if (!apiKey) {
+      console.error("RESEND_API_KEY environment variable is not set");
+      return new Response(
+        JSON.stringify({ error: "Email service not configured" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+    console.log("Resend API key found");
+
     // Send email to the business
+    console.log("Attempting to send email via Resend");
     const emailResponse = await resend.emails.send({
       from: "Contact Form <onboarding@resend.dev>",
       to: ["info@lieverturksdanpaaps.nl"],
