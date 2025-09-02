@@ -24,7 +24,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     console.log("Processing contact form request");
     const requestBody = await req.text();
-    console.log("Raw request body:", requestBody);
+    console.log("Raw request body length:", requestBody.length);
     
     let parsedBody: ContactEmailRequest;
     try {
@@ -41,7 +41,11 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const { name, email, message } = parsedBody;
-    console.log("Parsed form data:", { name: name ? "provided" : "missing", email: email ? "provided" : "missing", message: message ? "provided" : "missing" });
+    console.log("Parsed form data:", { 
+      name: name ? `"${name}"` : "missing", 
+      email: email ? `"${email}"` : "missing", 
+      message: message ? `"${message.substring(0, 50)}..."` : "missing" 
+    });
 
     // Validate required fields
     if (!email || !email.includes('@')) {
@@ -55,12 +59,12 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Send email to business using EmailJS
-    console.log("Attempting to send email via EmailJS");
+    // Send email using EmailJS public API
+    console.log("Attempting to send business notification email via EmailJS");
     
-    const emailPayload = {
+    const businessEmailData = {
       service_id: 'service_contact',
-      template_id: 'template_business',
+      template_id: 'template_business', 
       user_id: 'IyjcmiRWiBVeiMS9a',
       template_params: {
         to_email: 'info@lieverturksdanpaaps.nl',
@@ -71,58 +75,73 @@ const handler = async (req: Request): Promise<Response> => {
       }
     };
     
-    console.log("EmailJS payload:", JSON.stringify(emailPayload, null, 2));
+    console.log("Business email data:", JSON.stringify(businessEmailData, null, 2));
     
-    const businessEmailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(emailPayload)
-    });
+    try {
+      const businessResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(businessEmailData)
+      });
 
-    console.log("EmailJS response status:", businessEmailResponse.status);
-    console.log("EmailJS response headers:", Object.fromEntries(businessEmailResponse.headers.entries()));
+      const businessResponseText = await businessResponse.text();
+      console.log("Business email response status:", businessResponse.status);
+      console.log("Business email response body:", businessResponseText);
 
-    if (!businessEmailResponse.ok) {
-      const errorText = await businessEmailResponse.text();
-      console.error("Business email failed:", errorText);
-      console.error("Response status:", businessEmailResponse.status);
-      throw new Error(`Business email failed: ${businessEmailResponse.status} - ${errorText}`);
+      if (!businessResponse.ok) {
+        throw new Error(`Business email failed: ${businessResponse.status} - ${businessResponseText}`);
+      }
+
+      console.log("✅ Business email sent successfully");
+    } catch (businessError) {
+      console.error("❌ Business email error:", businessError);
+      throw businessError;
     }
 
-    console.log("Business email sent successfully");
+    // Send confirmation email to user
+    console.log("Attempting to send confirmation email to user:", email);
+    
+    const confirmationEmailData = {
+      service_id: 'service_contact',
+      template_id: 'template_confirmation',
+      user_id: 'IyjcmiRWiBVeiMS9a', 
+      template_params: {
+        to_email: email,
+        to_name: name || 'there',
+        user_message: message || 'No message provided',
+        subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
+      }
+    };
 
-    // Send confirmation email to user using EmailJS
-    console.log("Sending confirmation email to user:", email);
-    const confirmationEmailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        service_id: 'service_contact',
-        template_id: 'template_confirmation',
-        user_id: 'IyjcmiRWiBVeiMS9a',
-        template_params: {
-          to_email: email,
-          to_name: name || 'daar',
-          user_message: message || 'Geen bericht opgegeven',
-          subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
-        }
-      })
-    });
+    try {
+      const confirmationResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(confirmationEmailData)
+      });
 
-    if (!confirmationEmailResponse.ok) {
-      const errorText = await confirmationEmailResponse.text();
-      console.error("Confirmation email failed:", errorText);
-      // Don't throw here - business email was successful
-    } else {
-      console.log("Confirmation email sent successfully");
+      const confirmationResponseText = await confirmationResponse.text();
+      console.log("Confirmation email response status:", confirmationResponse.status);
+      console.log("Confirmation email response body:", confirmationResponseText);
+
+      if (confirmationResponse.ok) {
+        console.log("✅ Confirmation email sent successfully");
+      } else {
+        console.warn("⚠️ Confirmation email failed (non-critical):", confirmationResponseText);
+      }
+    } catch (confirmationError) {
+      console.warn("⚠️ Confirmation email error (non-critical):", confirmationError);
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: "Email sent successfully" }),
+      JSON.stringify({ 
+        success: true, 
+        message: "Message sent successfully to info@lieverturksdanpaaps.nl" 
+      }),
       {
         status: 200,
         headers: {
@@ -132,9 +151,11 @@ const handler = async (req: Request): Promise<Response> => {
       }
     );
   } catch (error: any) {
-    console.error("Error in send-contact-email function:", error);
+    console.error("❌ Critical error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to send email. Please try again." }),
+      JSON.stringify({ 
+        error: `Failed to send email: ${error.message || 'Unknown error'}` 
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
