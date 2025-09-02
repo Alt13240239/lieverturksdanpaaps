@@ -57,29 +57,38 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send email to business using EmailJS
     console.log("Attempting to send email via EmailJS");
+    
+    const emailPayload = {
+      service_id: 'service_contact',
+      template_id: 'template_business',
+      user_id: 'IyjcmiRWiBVeiMS9a',
+      template_params: {
+        to_email: 'info@lieverturksdanpaaps.nl',
+        from_name: name || 'Anonymous',
+        from_email: email,
+        message: message || 'No message provided',
+        subject: 'New Contact Form Submission - Liever Turks dan Paaps'
+      }
+    };
+    
+    console.log("EmailJS payload:", JSON.stringify(emailPayload, null, 2));
+    
     const businessEmailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        service_id: 'service_contact',
-        template_id: 'template_business',
-        user_id: 'IyjcmiRWiBVeiMS9a',
-        template_params: {
-          to_email: 'info@lieverturksdanpaaps.nl',
-          from_name: name || 'Anonymous',
-          from_email: email,
-          message: message || 'No message provided',
-          subject: 'New Contact Form Submission - Liever Turks dan Paaps'
-        }
-      })
+      body: JSON.stringify(emailPayload)
     });
+
+    console.log("EmailJS response status:", businessEmailResponse.status);
+    console.log("EmailJS response headers:", Object.fromEntries(businessEmailResponse.headers.entries()));
 
     if (!businessEmailResponse.ok) {
       const errorText = await businessEmailResponse.text();
       console.error("Business email failed:", errorText);
-      throw new Error(`Business email failed: ${businessEmailResponse.status}`);
+      console.error("Response status:", businessEmailResponse.status);
+      throw new Error(`Business email failed: ${businessEmailResponse.status} - ${errorText}`);
     }
 
     console.log("Business email sent successfully");
