@@ -1,7 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "npm:resend@2.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -58,76 +55,62 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // Check if Resend API key is available
-    const apiKey = Deno.env.get("RESEND_API_KEY");
-    if (!apiKey) {
-      console.error("RESEND_API_KEY environment variable is not set");
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json", ...corsHeaders },
+    // Send email to business using EmailJS
+    console.log("Attempting to send email via EmailJS");
+    const businessEmailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: 'service_contact',
+        template_id: 'template_business',
+        user_id: 'IyjcmiRWiBVeiMS9a',
+        template_params: {
+          to_email: 'info@lieverturksdanpaaps.nl',
+          from_name: name || 'Anonymous',
+          from_email: email,
+          message: message || 'No message provided',
+          subject: 'New Contact Form Submission - Liever Turks dan Paaps'
         }
-      );
+      })
+    });
+
+    if (!businessEmailResponse.ok) {
+      const errorText = await businessEmailResponse.text();
+      console.error("Business email failed:", errorText);
+      throw new Error(`Business email failed: ${businessEmailResponse.status}`);
     }
-    console.log("Resend API key found");
 
-    // Send email to the business
-    console.log("Attempting to send email via Resend");
-    const emailResponse = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: ["info@lieverturksdanpaaps.nl"],
-      subject: "New Contact Form Submission - Liever Turks dan Paaps",
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name || 'Not provided'}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
-          ${message || 'No message provided'}
-        </div>
-        <hr>
-        <p style="color: #666; font-size: 12px;">This email was sent from the contact form on lieverturksdanpaaps.nl</p>
-      `,
-    });
+    console.log("Business email sent successfully");
 
-    console.log("Contact email sent successfully:", emailResponse);
-
-    // Send confirmation email to the user
+    // Send confirmation email to user using EmailJS
     console.log("Sending confirmation email to user:", email);
-    const confirmationResponse = await resend.emails.send({
-      from: "Liever Turks dan Paaps <onboarding@resend.dev>",
-      to: [email],
-      subject: "We hebben je bericht ontvangen - Liever Turks dan Paaps",
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-          <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-            <h2 style="color: #333; margin-bottom: 20px;">Bedankt voor je bericht!</h2>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
-              Hallo ${name || 'daar'},
-            </p>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
-              We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op.
-            </p>
-            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #d4af37;">
-              <p style="margin: 0; color: #333; font-style: italic;">
-                "${message || 'Geen bericht opgegeven'}"
-              </p>
-            </div>
-            <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
-              Met vriendelijke groet,<br>
-              <strong>Team Liever Turks dan Paaps</strong>
-            </p>
-            <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-            <p style="color: #999; font-size: 12px; text-align: center;">
-              Dit is een automatisch gegenereerd bericht van lieverturksdanpaaps.nl
-            </p>
-          </div>
-        </div>
-      `,
+    const confirmationEmailResponse = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: 'service_contact',
+        template_id: 'template_confirmation',
+        user_id: 'IyjcmiRWiBVeiMS9a',
+        template_params: {
+          to_email: email,
+          to_name: name || 'daar',
+          user_message: message || 'Geen bericht opgegeven',
+          subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
+        }
+      })
     });
 
-    console.log("Confirmation email sent successfully:", confirmationResponse);
+    if (!confirmationEmailResponse.ok) {
+      const errorText = await confirmationEmailResponse.text();
+      console.error("Confirmation email failed:", errorText);
+      // Don't throw here - business email was successful
+    } else {
+      console.log("Confirmation email sent successfully");
+    }
 
     return new Response(
       JSON.stringify({ success: true, message: "Email sent successfully" }),
