@@ -48,10 +48,10 @@ const ContactForm = () => {
       };
 
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your actual EmailJS service ID
+        'service_contact',
         'template_business', 
         businessEmailParams,
-        'IyjcmiRWiBVeiMS9a'
+        'YnAmYFbdlBDuSJQLC'
       );
 
       // Send confirmation email to user
@@ -64,10 +64,10 @@ const ContactForm = () => {
 
       try {
         await emailjs.send(
-          'YOUR_SERVICE_ID', // Replace with your actual EmailJS service ID
+          'service_contact',
           'template_confirmation', 
           confirmationEmailParams,
-          'IyjcmiRWiBVeiMS9a'
+          'YnAmYFbdlBDuSJQLC'
         );
         console.log("Confirmation email sent successfully");
       } catch (confirmationError) {
