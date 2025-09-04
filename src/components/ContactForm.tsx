@@ -42,13 +42,13 @@ const ContactForm = () => {
       const businessEmailParams = {
         to_email: 'info@lieverturksdanpaaps.nl',
         from_name: formData.name || 'Anonymous',
-        from_email: formData.email,
+        reply_to: formData.email, // Set visitor email as reply-to
         message: formData.message || 'No message provided',
         subject: 'New Contact Form Submission - Liever Turks dan Paaps'
       };
 
       await emailjs.send(
-        'service_contact', 
+        'YOUR_SERVICE_ID', // Replace with your actual EmailJS service ID
         'template_business', 
         businessEmailParams,
         'IyjcmiRWiBVeiMS9a'
@@ -56,7 +56,7 @@ const ContactForm = () => {
 
       // Send confirmation email to user
       const confirmationEmailParams = {
-        to_email: formData.email,
+        to_email: formData.email, // Visitor email as recipient
         to_name: formData.name || 'there',
         user_message: formData.message || 'No message provided',
         subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
@@ -64,7 +64,7 @@ const ContactForm = () => {
 
       try {
         await emailjs.send(
-          'service_contact', 
+          'YOUR_SERVICE_ID', // Replace with your actual EmailJS service ID
           'template_confirmation', 
           confirmationEmailParams,
           'IyjcmiRWiBVeiMS9a'
