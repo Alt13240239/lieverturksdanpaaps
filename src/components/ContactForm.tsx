@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import emailjs from '@emailjs/browser';
 
 const ContactForm = () => {
   const { t } = useLanguage();
@@ -36,26 +36,42 @@ const ContactForm = () => {
         return;
       }
 
-      console.log("Submitting contact form with data:", {
-        name: formData.name ? "provided" : "missing",
-        email: formData.email ? "provided" : "missing", 
-        message: formData.message ? "provided" : "missing"
-      });
+      console.log("Submitting contact form with EmailJS");
 
-      // Send email via edge function
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message
-        }
-      });
+      // Send business notification email
+      const businessEmailParams = {
+        to_email: 'info@lieverturksdanpaaps.nl',
+        from_name: formData.name || 'Anonymous',
+        from_email: formData.email,
+        message: formData.message || 'No message provided',
+        subject: 'New Contact Form Submission - Liever Turks dan Paaps'
+      };
 
-      console.log("Edge function response:", { data, error });
+      await emailjs.send(
+        'service_contact', 
+        'template_business', 
+        businessEmailParams,
+        'IyjcmiRWiBVeiMS9a'
+      );
 
-      if (error) {
-        console.error("Edge function error:", error);
-        throw error;
+      // Send confirmation email to user
+      const confirmationEmailParams = {
+        to_email: formData.email,
+        to_name: formData.name || 'there',
+        user_message: formData.message || 'No message provided',
+        subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
+      };
+
+      try {
+        await emailjs.send(
+          'service_contact', 
+          'template_confirmation', 
+          confirmationEmailParams,
+          'IyjcmiRWiBVeiMS9a'
+        );
+        console.log("Confirmation email sent successfully");
+      } catch (confirmationError) {
+        console.warn("Confirmation email failed (non-critical):", confirmationError);
       }
 
       setIsSubmitted(true);
@@ -73,29 +89,9 @@ const ContactForm = () => {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
       
-      // Provide more specific error messages
-      let errorMessage = "Failed to send message. Please try again.";
-      let errorTitle = "Error";
-      
-      if (error?.message) {
-        console.log("Specific error message:", error.message);
-        if (error.message.includes('fetch')) {
-          errorMessage = "Network error. Please check your connection and try again.";
-          errorTitle = "Connection Error";
-        } else if (error.message.includes('timeout')) {
-          errorMessage = "Request timed out. Please try again.";
-          errorTitle = "Timeout Error";
-        } else if (error.message.includes('404')) {
-          errorMessage = "Service unavailable. Please try again later.";
-          errorTitle = "Service Error";
-        } else {
-          errorMessage = `Error: ${error.message}`;
-        }
-      }
-      
       toast({
-        title: errorTitle,
-        description: errorMessage,
+        title: "Error",
+        description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
     }
