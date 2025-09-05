@@ -48,8 +48,8 @@ const ContactForm = () => {
       };
 
       await emailjs.send(
-        'service_contact',
-        'template_business', 
+        'service_b9qa6bp',
+        'template_8jsr8qb', 
         businessEmailParams,
         'YnAmYFbdlBDuSJQLC'
       );
@@ -64,8 +64,8 @@ const ContactForm = () => {
 
       try {
         await emailjs.send(
-          'service_contact',
-          'template_confirmation', 
+          'service_b9qa6bp',
+          'template_dcy4y8p', 
           confirmationEmailParams,
           'YnAmYFbdlBDuSJQLC'
         );
