@@ -41,8 +41,8 @@ const ContactForm = () => {
       // Send business notification email
       const businessEmailParams = {
         to_email: 'info@lieverturksdanpaaps.nl',
-        from_name: formData.name || 'Anonymous',
-        reply_to: formData.email, // Set visitor email as reply-to
+        name: formData.name || 'Anonymous',
+        email: formData.email,
         message: formData.message || 'No message provided',
         subject: 'New Contact Form Submission - Liever Turks dan Paaps'
       };
@@ -57,8 +57,9 @@ const ContactForm = () => {
       // Send confirmation email to user
       const confirmationEmailParams = {
         to_email: formData.email, // Visitor email as recipient
-        to_name: formData.name || 'there',
-        user_message: formData.message || 'No message provided',
+        name: formData.name || 'there',
+        email: formData.email,
+        message: formData.message || 'No message provided',
         subject: 'We hebben je bericht ontvangen - Liever Turks dan Paaps'
       };
 
