@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import CartIcon from '@/components/CartIcon';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -41,7 +40,6 @@ const Navbar = ({ className }: { className?: string }) => {
         
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
-          <CartIcon />
         </div>
       </div>
     </header>

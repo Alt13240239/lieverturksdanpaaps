@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/contexts/LanguageContext';
+import OutOfStockDialog from '@/components/OutOfStockDialog';
 
 const ProductSection = () => {
   const { t, language } = useLanguage();
+  const [showOutOfStockDialog, setShowOutOfStockDialog] = useState(false);
+  
+  // Stock availability - set to false to show out of stock behavior
+  const IN_STOCK = true;
   
   // Product specifications with translations
   const specifications = [
@@ -21,7 +26,11 @@ const ProductSection = () => {
   const stripePaymentUrl = "https://buy.stripe.com/eVq5kE3QB5fwgP53E114402";
 
   const handleBuyNow = () => {
-    window.open(stripePaymentUrl, '_blank');
+    if (IN_STOCK) {
+      window.open(stripePaymentUrl, '_blank');
+    } else {
+      setShowOutOfStockDialog(true);
+    }
   };
 
   return (
@@ -100,6 +109,11 @@ const ProductSection = () => {
           </div>
         </div>
       </section>
+      
+      <OutOfStockDialog 
+        open={showOutOfStockDialog} 
+        onOpenChange={setShowOutOfStockDialog} 
+      />
     </main>
   );
 };
