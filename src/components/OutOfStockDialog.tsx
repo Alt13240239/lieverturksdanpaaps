@@ -69,11 +69,11 @@ const OutOfStockDialog = ({
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex items-start gap-3">
-            <Label htmlFor="email" className="text-sm leading-relaxed pt-2 min-w-0 flex-shrink-0">
+          <div className="space-y-3">
+            <Label htmlFor="email" className="text-sm leading-relaxed">
               {language === 'nl' ? 'Herinner me wanneer het product op voorraad is:' : 'Notify me when the product is available:'}
             </Label>
-            <Input id="email" name="notify_email" type="email" placeholder={language === 'nl' ? 'je.email@voorbeeld.nl' : 'your.email@example.com'} value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} className="flex-1 rounded-sm" />
+            <Input id="email" name="notify_email" type="email" placeholder="Enter your email address:" value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} className="w-full rounded-sm" />
           </div>
           <div className="flex gap-2">
             <Button type="submit" disabled={isSubmitting} className="flex-1 rounded-sm">
