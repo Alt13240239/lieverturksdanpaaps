@@ -79,36 +79,32 @@ const OutOfStockDialog = ({ open, onOpenChange }: OutOfStockDialogProps) => {
             {language === 'nl' ? 'Product niet op voorraad' : 'Product Out of Stock'}
           </DialogTitle>
         </DialogHeader>
-        <div className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            {language === 'nl' ? 'Het product is niet op voorraad.' : 'The product is currently out of stock.'}
-          </p>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex items-center gap-3">
-              <Label htmlFor="email" className="whitespace-nowrap">
-                {language === 'nl' ? 'Herinner me wanneer het product op voorraad is:' : 'Notify me when the product is available:'}
-              </Label>
-              <Input
-                id="email"
-                name="notify_email"
-                type="email"
-                placeholder={language === 'nl' ? 'Je emailadres' : 'Your email address'}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={isSubmitting}
-              />
-            </div>
-            <div className="flex gap-2">
-              <Button type="submit" className="flex-1" disabled={isSubmitting}>
-                {isSubmitting ? (language === 'nl' ? 'Bezig...' : 'Sending...') : (language === 'nl' ? 'Herinner me' : 'Notify Me')}
-              </Button>
-              <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isSubmitting}>
-                {language === 'nl' ? 'Annuleren' : 'Cancel'}
-              </Button>
-            </div>
-          </form>
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex items-start gap-3">
+            <Label htmlFor="email" className="text-sm leading-relaxed pt-2 min-w-0 flex-shrink-0">
+              {language === 'nl' ? 'Herinner me wanneer het product op voorraad is:' : 'Notify me when the product is available:'}
+            </Label>
+            <Input
+              id="email"
+              name="notify_email"
+              type="email"
+              placeholder={language === 'nl' ? 'je.email@voorbeeld.nl' : 'your.email@example.com'}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              disabled={isSubmitting}
+              className="flex-1"
+            />
+          </div>
+          <div className="flex gap-2">
+            <Button type="submit" className="flex-1" disabled={isSubmitting}>
+              {isSubmitting ? (language === 'nl' ? 'Bezig...' : 'Sending...') : (language === 'nl' ? 'Herinner me' : 'Notify Me')}
+            </Button>
+            <Button type="button" variant="outline" className="flex-1" onClick={() => onOpenChange(false)} disabled={isSubmitting}>
+              {language === 'nl' ? 'Annuleren' : 'Cancel'}
+            </Button>
+          </div>
+        </form>
       </DialogContent>
     </Dialog>
   );
