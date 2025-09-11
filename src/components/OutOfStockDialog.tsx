@@ -35,13 +35,17 @@ const OutOfStockDialog = ({
     }
     setIsSubmitting(true);
     try {
-      // Send business notification email
+      // Send business notification email to info@lieverturksdanpaaps.nl
       await emailjs.send('service_b9qa6bp', 'template_8jsr8qb', {
+        to_email: 'info@lieverturksdanpaaps.nl',
+        user_email: email,
         notify_email: email
       }, 'YnAmYFbdlBDuSJQLC');
 
       // Send confirmation email to user
       await emailjs.send('service_b9qa6bp', 'template_dcy4y8p', {
+        to_email: email,
+        user_email: email,
         notify_email: email
       }, 'YnAmYFbdlBDuSJQLC');
       toast({
