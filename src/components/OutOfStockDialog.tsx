@@ -37,17 +37,9 @@ const OutOfStockDialog = ({
     try {
       // Send business notification email to info@lieverturksdanpaaps.nl
       await emailjs.send('service_b9qa6bp', 'template_8jsr8qb', {
-        to_email: 'info@lieverturksdanpaaps.nl',
-        user_email: email,
         notify_email: email
       }, 'YnAmYFbdlBDuSJQLC');
 
-      // Send confirmation email to user
-      await emailjs.send('service_b9qa6bp', 'template_dcy4y8p', {
-        to_email: email,
-        user_email: email,
-        notify_email: email
-      }, 'YnAmYFbdlBDuSJQLC');
       toast({
         title: language === 'nl' ? "Bedankt!" : "Thank you!",
         description: language === 'nl' ? "We laten je weten wanneer het product weer op voorraad is." : "We'll notify you when the product is back in stock."
