@@ -122,7 +122,7 @@ const translations = {
     
     // Cart
     'cart.add': 'Koop Nu',
-    'cart.quantityNote': 'Je kunt de gewenste hoeveelheid kiezen tijdens het afrekenen.',
+    'cart.quantityNote': 'Je kunt het gewenste aantal kiezen tijdens het afrekenen.',
     
     // Testimonials
     'testimonials.title': 'Van Onze Verzamelaars',

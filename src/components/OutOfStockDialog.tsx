@@ -61,7 +61,7 @@ const OutOfStockDialog = ({
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {language === 'nl' ? 'Product niet op voorraad' : 'Product Out of Stock'}
+            {language === 'nl' ? 'Helaas is het product niet op voorraad' : 'Unfortunately, the product is out of stock'}
           </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -69,7 +69,7 @@ const OutOfStockDialog = ({
             <Label htmlFor="email" className="text-sm leading-relaxed">
               {language === 'nl' ? 'Herinner me wanneer het product op voorraad is:' : 'Notify me when the product is available:'}
             </Label>
-            <Input id="email" name="notify_email" type="email" placeholder="Enter your email address:" value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} className="w-full rounded-sm" />
+            <Input id="email" name="notify_email" type="email" placeholder={language === 'nl' ? 'Voer je email adres in:' : 'Enter your email address:'} value={email} onChange={e => setEmail(e.target.value)} required disabled={isSubmitting} className="w-full rounded-sm" />
           </div>
           <div className="flex gap-2">
             <Button type="submit" disabled={isSubmitting} className="flex-1 rounded-sm">

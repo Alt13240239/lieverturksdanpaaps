@@ -23,7 +23,7 @@ const LanguageSwitcher = () => {
             className="gap-2 border-charcoal/50 hover:bg-charcoal/10 hover:text-charcoal"
           >
             <GlobeIcon className="h-4 w-4" />
-            <span className="font-medium">{language === 'en' ? 'EN' : 'NL'}</span>
+            <span className="font-medium">{language === 'en' ? 'NL' : 'EN'}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="bg-white border border-charcoal/20 shadow-md">

@@ -126,12 +126,13 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <Label htmlFor="name" className="text-cream/70 text-sm">
-            {t('contact.name')}
+            {t('contact.name')} <span className="text-gold">*</span>
           </Label>
           <Input
             id="name"
             name="name"
             type="text"
+            required
             value={formData.name}
             onChange={handleChange}
             className="mt-1 bg-cream/5 border-cream/20 text-cream placeholder:text-cream/50 focus:border-gold focus:ring-gold/20"
@@ -157,11 +158,12 @@ const ContactForm = () => {
         
         <div>
           <Label htmlFor="message" className="text-cream/70 text-sm">
-            {t('contact.message')}
+            {t('contact.message')} <span className="text-gold">*</span>
           </Label>
           <Textarea
             id="message"
             name="message"
+            required
             value={formData.message}
             onChange={handleChange}
             rows={3}
@@ -172,7 +174,7 @@ const ContactForm = () => {
         
         <Button
           type="submit"
-          disabled={isSubmitting || !formData.email}
+          disabled={isSubmitting || !formData.email || !formData.name || !formData.message}
           className="w-full bg-gold hover:bg-gold/90 text-charcoal font-medium py-2 px-4 rounded-md transition-colors"
         >
           {isSubmitting ? t('contact.sending') : t('contact.send')}
