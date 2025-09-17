@@ -10,7 +10,7 @@ const ProductSection = () => {
   const [showOutOfStockDialog, setShowOutOfStockDialog] = useState(false);
   
   // Stock availability - set to false to show out of stock behavior
-  const IN_STOCK = true;
+  const IN_STOCK = false;
   
   // Product specifications with translations
   const specifications = [
