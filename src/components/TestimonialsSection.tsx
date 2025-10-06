@@ -22,8 +22,8 @@ const TestimonialsSection = () => {
     },
     {
       quote: language === 'nl'
-        ? "Het authenticatieproces en de documentatie die bij mijn Penning werd geleverd, gaven me volledig vertrouwen in de authenticiteit ervan. Een waardevolle investering voor elke serieuze verzamelaar."
-        : "The authentication process and documentation provided with my Penning gave me complete confidence in its authenticity. A worthy investment for any serious collector.",
+        ? "Ik ben enorm blij met mijn penning — hij is niet alleen prachtig vervaardigd, met die iconische halve maan en historische inscriptie, maar draagt ook een krachtige boodschap mee: moed, verzet en zoektocht naar vrijheid."
+        : "I am incredibly happy with my penning — it is not only beautifully crafted, with that iconic crescent and historic inscription, but it also carries a powerful message: courage, resistance, and the pursuit of freedom.",
       author: "Maria Fernandez",
       title: language === 'nl' ? "Lid Numismatische Vereniging" : "Numismatic Society Member"
     }
