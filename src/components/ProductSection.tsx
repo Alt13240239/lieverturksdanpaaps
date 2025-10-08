@@ -22,7 +22,7 @@ const ProductSection = () => {
     { name: t('spec.origin'), value: language === 'nl' ? "Nederland" : "Netherlands" }
   ];
   
-  const unitPrice = 0.50; // Base price in euros
+  const unitPrice = 89.00; // Base price in euros
   const stripePaymentUrl = "https://buy.stripe.com/eVq5kE3QB5fwgP53E114402";
 
   const handleBuyNow = () => {
