@@ -23,7 +23,7 @@ const ProductSection = () => {
   ];
   
   const unitPrice = 89.00; // Base price in euros
-  const stripePaymentUrl = "https://buy.stripe.com/eVq5kE3QB5fwgP53E114402";
+  const stripePaymentUrl = "https://buy.stripe.com/6oU00k9aVeQ60Q7gqN14403";
 
   const handleBuyNow = () => {
     if (IN_STOCK) {
